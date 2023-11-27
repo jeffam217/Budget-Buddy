@@ -13,6 +13,7 @@
     <section>
       <article id="accounts">
         <h1>Accounts</h1>
+        <table id="accountTable"></table>
       </article>
       <article id="transactions">
         <h1>Transactions</h1>
@@ -21,5 +22,25 @@
         <h1>Budget Projection</h1>
       </article>
     </section>
+
+    <script>
+      let jsonData = '{
+        "accounts": [
+          { "name": "checking" },
+          { "name": "savings" }
+        ]
+      }';
+      let data = JSON.parse(jsonData);
+
+      let accountTableData = '<tbody>';
+
+      data.accounts.forEach(account => {
+        accountTableData += '<tr><td>' + account.name + '</td></tr>';
+      });
+
+      accountTableData += '</tbody>';
+
+      document.getElementById("accountTable").innerHTML = accountTableData;
+    </script>
   </body>
 </html>
