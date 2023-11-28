@@ -24,10 +24,14 @@
     </section>
 
     <script>
+      function selectAccount(accountId) {
+        console.log("account " + accountId + " selected.");
+      }
+      
       let jsonData = '{ \
         "accounts": [ \
-          { "name": "checking" }, \
-          { "name": "savings" } \
+          { "id": 1, "name": "checking" }, \
+          { "id": 2, "name": "savings" } \
         ] \
       }';
       let data = JSON.parse(jsonData);
@@ -35,6 +39,7 @@
       let accountTableData = '<tbody>';
 
       data.accounts.forEach(account => {
+        let button = '<button onClick="selectAccount(' + account.id + ')">Select</button>';
         accountTableData += '<tr><td>' + account.name + '</td></tr>';
       });
 
