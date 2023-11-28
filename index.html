@@ -40,7 +40,7 @@
 
       data.accounts.forEach(account => {
         let button = '<button onClick="selectAccount(' + account.id + ')">Select</button>';
-        accountTableData += '<tr><td>' + account.name + '</td></tr>';
+        accountTableData += '<tr><td>' + account.name + '</td><td>' + button + '</td></tr>';
       });
 
       accountTableData += '</tbody>';
