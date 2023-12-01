@@ -24,28 +24,36 @@
     </section>
 
     <script>
+      function getData() {
+        let jsonData = '{ \
+          "accounts": [ \
+            { "id": 1, "name": "checking" }, \
+            { "id": 2, "name": "savings" } \
+          ] \
+        }';
+        
+        let this.data = JSON.parse(jsonData);
+      }
+      
+      function loadAccounts() {
+        let accountTableData = '<tbody>';
+
+        this.data.accounts.forEach(account => {
+          let button = '<button onClick="selectAccount(' + account.id + ')">Select</button>';
+          accountTableData += '<tr><td>' + account.name + '</td><td>' + button + '</td></tr>';
+        });
+
+        accountTableData += '</tbody>';
+
+        document.getElementById("accountTable").innerHTML = accountTableData;
+      }
+      
       function selectAccount(accountId) {
         console.log("account " + accountId + " selected.");
       }
-      
-      let jsonData = '{ \
-        "accounts": [ \
-          { "id": 1, "name": "checking" }, \
-          { "id": 2, "name": "savings" } \
-        ] \
-      }';
-      let data = JSON.parse(jsonData);
 
-      let accountTableData = '<tbody>';
-
-      data.accounts.forEach(account => {
-        let button = '<button onClick="selectAccount(' + account.id + ')">Select</button>';
-        accountTableData += '<tr><td>' + account.name + '</td><td>' + button + '</td></tr>';
-      });
-
-      accountTableData += '</tbody>';
-
-      document.getElementById("accountTable").innerHTML = accountTableData;
+      getData();
+      loadAccounts();
     </script>
   </body>
 </html>
